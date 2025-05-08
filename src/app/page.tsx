@@ -186,6 +186,28 @@ export default function Home() {
             : "Click 'Blow Candles' to begin"}
         </p>
       </div>
+
+
+      <div className="mt-12 text-center">
+        <p className="text-lg sm:text-xl text-rose-600 font-semibold">
+        🫶 Made with love by J. Estano
+        </p>
+        <p className="text-xs text-gray-400 mt-1">
+          Src:{" "}
+          <a
+            href="https://github.com/JohnEstano/happybirthday-cake"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-gray-600"
+          >
+            github
+          </a>
+          <br></br>
+          cake from: 
+          <a href="https://codepen.io/fazlurr/pen/gPMJMK"  className="underline hover:text-gray-600">CODEPEN</a>
+        </p>
+      </div>
+
     </main>
   );
 }
