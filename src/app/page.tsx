@@ -75,7 +75,7 @@ export default function Home() {
       audioContextRef.current?.close();
       setIsMicAllowed(false);
       setShowConfetti(true);
-      setShowImage(true); 
+      setShowImage(true);
 
       musicTimeout = setTimeout(() => {
         try {
@@ -114,7 +114,7 @@ export default function Home() {
 
   const resetCandles = () => {
     setCandlesLit(Array(5).fill(true));
-    setShowImage(false); 
+    setShowImage(false);
     if (audioRef.current) {
       audioRef.current.pause();
       audioRef.current.currentTime = 0;
@@ -123,6 +123,24 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-pink-50 flex flex-col items-center justify-center px-4 py-8 sm:p-8 relative text-center">
+      {candlesLit.every(c => !c) && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute top-6 sm:top-10 z-50"
+        >
+          <div className="bg-white/90 backdrop-blur-sm border border-rose-200 px-6 py-3 rounded-xl shadow-md">
+            <h2 className="text-2xl sm:text-3xl font-bold text-rose-500 drop-shadow">
+              You 🫵 are the best!🫶
+            </h2>
+            <p>More birthdays to come, good health, be rich, be immortal, be happy.</p>
+          </div>
+        </motion.div>
+      )}
+
+
       {showConfetti && (
         <Confetti
           width={windowSize.width}
@@ -139,7 +157,7 @@ export default function Home() {
         <p className="text-base sm:text-lg text-gray-700">
           {isMicAllowed
             ? "Blow on the cake to extinguish the candles! (or shout idc)"
-            : "Happy birthday mama beng press the button and then start blowing! "}
+            : "Happy birthday mother, turn on mic to blow! (or shout nalang para mas dali ok?)"}
         </p>
       </div>
 
@@ -190,8 +208,9 @@ export default function Home() {
 
       <div className="mt-12 text-center">
         <p className="text-lg sm:text-xl text-rose-600 font-semibold">
-        🫶 Made with love by J. Estano
+          🫶 from J. Estano
         </p>
+
         <p className="text-xs text-gray-400 mt-1">
           Src:{" "}
           <a
@@ -203,11 +222,13 @@ export default function Home() {
             github
           </a>
           <br></br>
-          cake from: 
-          <a href="https://codepen.io/fazlurr/pen/gPMJMK"  className="underline hover:text-gray-600">CODEPEN</a>
+          cake from:
+          <a href="https://codepen.io/fazlurr/pen/gPMJMK" className="underline hover:text-gray-600">CODEPEN</a>
         </p>
       </div>
 
     </main>
+
+
   );
 }
